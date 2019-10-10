@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <title>
+        ZEESLAG
+    </title>
+
+<style>
+
+body{
+    background-color: white;
+}
+
+h1{
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+#zeeslagBoard {
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+#zeeslagBoard div {
+
+    width: 50px;
+    height: 50px;
+    background: blue;
+    display: inline-block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 align="center">ZEESLAG</h1>
+<center>
+<div id="zeeslagBoard"></div>
+</center>
+
+
+<script>
+
+    var Carrier = { height: 1, width: 5 };
+    var Battleship = { height: 4, width: 1 };
+    var Cruiser = { height: 1, width: 3 };
+
+
+
+// grootte van Board
+
+        rowsNum = 4;
+        colsNum = 6;
+        turnsNum = 0;
+        squareSize = 40;
+
+// container board
+
+    var boardContainer = document.getElementById("zeeslagBoard");
+
+
+    // rijen maken
+
+    for (i = 0; i < colsNum; i++) {
+        for (j = 0; j < rowsNum; j++) {
+
+
+            var square = document.createElement("div");
+            boardContainer.appendChild(square);
+
+            square.id = 'sq' + j + i;
+
+            var leftPosition = i * squareSize;
+
+            square.style.top = topPosition + 'px';
+            square.style.left = leftPosition + 'px';
+        }
+    }
+
+// 0 = zee, 1 = schip 2 = mis 3 = raak
+    var gameboard = [
+        [1, 1, 1, 1, 1, 1]
+        [1, 0, 0, 0, 0, 0]
+        [1, 0, 0, 1, 1, 1]
+        [1, 0, 0, 0, 0, 0]
+        ]
+    
+
+
+</script>
+
+</body>
+
+</html>
