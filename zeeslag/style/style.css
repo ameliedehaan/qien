@@ -1,0 +1,55 @@
+body{
+    background-color: white;
+    margin-left: 100px;
+    margin-top: 50px;
+    margin-right: 100px;
+}
+
+h1{
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+#bodycontainer {
+    display: flex;
+    align-content: center;
+}
+
+#zeeslagBoard {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    display: inline-block
+}
+
+#zeeslagBoard div {
+    flex: 1;
+    width: 50px;
+    height: 50px;
+    background: black;
+    display: inline-block;
+    border: 1px solid white;
+    
+}
+
+#zeeslagBoard div:hover {
+    background: grey;
+}
+
+#display {
+line-height: 1;
+align-content: center;
+}
+
+#textcontainer {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    background: lightcoral;
+    align-content: center;
+}
