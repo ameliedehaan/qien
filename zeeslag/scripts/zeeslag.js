@@ -1,86 +1,16 @@
 //loading DDOM        
 window.onload = function() {
 
-//username in localstorage
-
-function createUser() {
-    var userName = document.getElementById("username").value;
-   // console.log(userName);
-    var userJSON = JSON.stringify(userName)
-   // console.log(userJSON);
-    localStorage.setItem("username", userJSON);
-    window.location.replace("zeeslag.html");
-} ;
-
-//display naam
-function welcome() {
-    var player = localStorage.getItem("username");
-    var Parse = JSON.parse(player);
-    console.log(Parse);
-    var welcomediv = document.getElementById("welcome");
-    welcomediv.innerHTML = "Hoi " + Parse + "en welkom bij dit spel!";
-    console.log(welcomediv);
-};
 
 // grootte van Board
 
-        rowsNum = 6;
-        colsNum = 6;
+        rowsNum = 9;
+        colsNum = 9;
         turnsNum = 0;
-        squareSize = 50;
-
-// defining variables
-// 0 = zee, 1 = schip 2 = mis 3 = raak
-// soorten schepen    
-        var Carrier = [1, 1, 1, 1, 1];
-
-        var Battleship = [1, 1, 1, 1];
-
-        var Cruiser = [1, 1, 1];
-
-// totaal vierkanten = 36, boten = 15
-
-        var Ships = Carrier.concat(Cruiser, Battleship);
-
-// maken van random Array
-        var leftover = ((rowsNum*colsNum)-(Ships.length));
-        var boardleftover = new Array(leftover).fill(0);
-
-//shuffle function
-        var boardadded = [Carrier, Battleship, Cruiser, boardleftover];
-        console.log(boardadded);
-
-        function shuffle(array) {
-            var currentIndex = array.length, temporaryValue, randomIndex;
-          
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-          
-              // Pick a remaining element...
-              randomIndex = Math.floor(Math.random() * currentIndex);
-              currentIndex -= 1;
-          
-              // And swap it with the current element.
-              temporaryValue = array[currentIndex];
-              array[currentIndex] = array[randomIndex];
-              array[randomIndex] = temporaryValue;
-            }
-          
-            return array;
-          }
-
-        arr = shuffle(boardadded);
-        arr = arr.concat();
-    console.log(arr);
-
-        while (arr.length > 0) {
-            portions = arr.splice(0,6)
-            console.log(portions);
-        }
+        squareSize = 40;
 
 // hoeveel is geraakt = 0 in begin
         var Count = 0;
-
 
 // container board
     var boardContainer = document.getElementById("zeeslagBoard");
@@ -106,23 +36,40 @@ function welcome() {
     }
 // gameboard pre-defined
     var gameboard = [
-        [1, 1, 1, 1, 1, 0],
-        [1, 0, 0, 0, 0, 0],
-        [1, 0, 0, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0],
-        [1, 1, 1, 0, 0, 0],
-        [0, 0, 0, 1, 1, 1]
+        [1, 1, 1, 1, 1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 1, 1],
+        [1, 0, 0, 1, 1, 1, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 1, 1],
+        [1, 1, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
         
-// randomize board
+// randomize board using Fisher-Yates on every reload
+function shuffle(arrayboard) {
+    var ctr = arrayboard.length, temp, index;
 
+    while (ctr > 0) {
+        index = Math.floor(Math.random() * ctr);
+        ctr--;
+        temp = arrayboard[ctr];
+        arrayboard[ctr] = arrayboard[index];
+        arrayboard[index] = temp;
+    }
+    return arrayboard;
+
+}
+console.log(shuffle(gameboard));
   
 
-//function randomize() 
-//need to figure out
-
 //let's play
-document.getElementById("display").innerHTML = "Click on a square!";
+
+var user = localStorage.getItem("key");
+console.log(user);
+
+document.getElementById("display").innerHTML = "Welkom " + user + ". Klik op een vierkant!";
 
 
 boardContainer.addEventListener("click", sinkswim, false);
@@ -141,23 +88,25 @@ function sinkswim(a) {
         console.log("miss"); 
         a.target.style.background = "blue";
         gameboard[row][col] = 3;
-        document.getElementById("display").innerHTML = "It's a miss!";
+        document.getElementById("display").innerHTML = "Niet raak! Nog " + (27-Count) + " vierkanten over.";
         }
      
     else if (gameboard[row][col] == 1) {
         console.log("hit");
         a.target.style.background = "red";
         gameboard[row][col] = 2;
-        document.getElementById("display").innerHTML = "It's a hit!";
         Count ++;
-        if (Count == 17) {
-            document.getElementById("display").innerHTML = "You've won!";
-            console.log("Win!");
+        document.getElementById("display").innerHTML = "Raak! Nog " + (27-Count) + " vierkanten over.";
+
+        if (Count == 27) {
+            document.getElementById("display").innerHTML = "Je hebt gewonnen!";
+            alert("Je hebt gewonnen! Nog een keer spelen?" );
+            document.location.reload();
             } }
 
     else if (gameboard[row][col] > 1) {
     console.log("You've already hit this square!");  
-        document.getElementById("display").innerHTML = "You've already hit this square!";}
+        document.getElementById("display").innerHTML = "Je hebt al op deze vierkant geklikt! Nog " + (27-Count) + " vierkanten over.";}
    
     };
     a.stopPropagation();

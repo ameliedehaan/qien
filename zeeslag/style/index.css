@@ -1,0 +1,27 @@
+#buttoncontainer {
+    margin: 30px;
+}
+
+body {
+    animation-duration: 3s;
+    animation-name: slide-in;
+}
+
+p {
+    margin: 30px;
+}
+
+#animatie {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background-color: black;
+    animation-name: squareanimated;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+@keyframes squareanimated {
+    0% {background-color:black;}
+    40% {background-color: blue;}
+    80% {background-color: red;}
+}
