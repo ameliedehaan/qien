@@ -1,75 +1,27 @@
-<html>
+//loading DDOM        
+window.onload = function() {
 
-<head>
-    <title>
-        ZEESLAG
-    </title>
+//username in localstorage
 
-<style>
+function createUser() {
+    var userName = document.getElementById("username").value;
+   // console.log(userName);
+    var userJSON = JSON.stringify(userName)
+   // console.log(userJSON);
+    localStorage.setItem("username", userJSON);
+    window.location.replace("zeeslag.html");
+} ;
 
-body{
-    background-color: white;
-    margin-left: 100px;
-    margin-top: 50px;
-    margin-right: 100px;
-}
+//display naam
+function welcome() {
+    var player = localStorage.getItem("username");
+    var Parse = JSON.parse(player);
+    console.log(Parse);
+    var welcomediv = document.getElementById("welcome");
+    welcomediv.innerHTML = "Hoi " + Parse + "en welkom bij dit spel!";
+    console.log(welcomediv);
+};
 
-h1{
-    font-size: x-large;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-p{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: medium;
-}
-
-#zeeslagBoard {
-    width: 350px;
-    height: 350px;
-    position: relative;
-    display: inline-block
-}
-
-#zeeslagBoard div {
-
-    width: 50px;
-    height: 50px;
-    background: black;
-    display: inline-block;
-    border: 1px solid white;
-    
-}
-
-#zeeslagBoard div:hover {
-    background: grey;
-}
-
-#display {
-
-}
-
-#textcontainer {
-    width: 350px;
-    height: 350px;
-    position: relative;
-    display: inline-block
-}
-</style>
-
-</head>
-
-<body>
-
-<h1 align="center">ZEESLAG</h1>
-<div id="zeeslagBoard"></div>
-<div align="center" id="textcontainer">
-<div id="display"></div></div>
-
-
-
-
-<script>
 // grootte van Board
 
         rowsNum = 6;
@@ -79,26 +31,61 @@ p{
 
 // defining variables
 // 0 = zee, 1 = schip 2 = mis 3 = raak
-    
+// soorten schepen    
         var Carrier = [1, 1, 1, 1, 1];
 
-        var Battleship = [
-        [1],
-        [1],
-        [1],    
-        [1]
-        ];
+        var Battleship = [1, 1, 1, 1];
 
         var Cruiser = [1, 1, 1];
 
+// totaal vierkanten = 36, boten = 15
+
+        var Ships = Carrier.concat(Cruiser, Battleship);
+
+// maken van random Array
+        var leftover = ((rowsNum*colsNum)-(Ships.length));
+        var boardleftover = new Array(leftover).fill(0);
+
+//shuffle function
+        var boardadded = [Carrier, Battleship, Cruiser, boardleftover];
+        console.log(boardadded);
+
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+          
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+          
+              // Pick a remaining element...
+              randomIndex = Math.floor(Math.random() * currentIndex);
+              currentIndex -= 1;
+          
+              // And swap it with the current element.
+              temporaryValue = array[currentIndex];
+              array[currentIndex] = array[randomIndex];
+              array[randomIndex] = temporaryValue;
+            }
+          
+            return array;
+          }
+
+        arr = shuffle(boardadded);
+        arr = arr.concat();
+    console.log(arr);
+
+        while (arr.length > 0) {
+            portions = arr.splice(0,6)
+            console.log(portions);
+        }
+
+// hoeveel is geraakt = 0 in begin
         var Count = 0;
 
-// container board
 
+// container board
     var boardContainer = document.getElementById("zeeslagBoard");
 
     // rijen maken
-
     for (x = 0; x < colsNum; x++) {
         for (y = 0; y < rowsNum; y++) {
 
@@ -117,7 +104,7 @@ p{
             square.style.left = leftPosition + 'px';
         }
     }
-
+// gameboard pre-defined
     var gameboard = [
         [1, 1, 1, 1, 1, 0],
         [1, 0, 0, 0, 0, 0],
@@ -126,9 +113,17 @@ p{
         [1, 1, 1, 0, 0, 0],
         [0, 0, 0, 1, 1, 1]
         ]
-//let's play
+        
+// randomize board
 
+  
+
+//function randomize() 
+//need to figure out
+
+//let's play
 document.getElementById("display").innerHTML = "Click on a square!";
+
 
 boardContainer.addEventListener("click", sinkswim, false);
 
@@ -143,7 +138,6 @@ function sinkswim(a) {
 
 //is het raak of mis       
     if (gameboard[row][col] == 0) {
-        //document.getElementById(zeeslagboard).innerHTML
         console.log("miss"); 
         a.target.style.background = "blue";
         gameboard[row][col] = 3;
@@ -158,7 +152,7 @@ function sinkswim(a) {
         Count ++;
         if (Count == 17) {
             document.getElementById("display").innerHTML = "You've won!";
-
+            console.log("Win!");
             } }
 
     else if (gameboard[row][col] > 1) {
@@ -168,8 +162,4 @@ function sinkswim(a) {
     };
     a.stopPropagation();
 };
-</script>
-
-</body>
-
-</html>
+};
