@@ -1,0 +1,6 @@
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\bin\Debug\Blackjack.exe.config
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\bin\Debug\Blackjack.exe
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\bin\Debug\Blackjack.pdb
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\obj\Debug\Blackjack.csprojAssemblyReference.cache
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\obj\Debug\Blackjack.exe
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\obj\Debug\Blackjack.pdb

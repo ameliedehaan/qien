@@ -55,7 +55,7 @@ namespace oefenen2
                     }
                 }
             }
-            Console.WriteLine("Het spel is beeindigd. Typ n om een nieuw spel te beginnen.";
+            Console.WriteLine("Het spel is beeindigd. Typ n om een nieuw spel te beginnen.");
             if (inputUser == "n")
             { Spelbord.Spelen = true; }
             else
