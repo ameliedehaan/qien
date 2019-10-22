@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F3E2BC3-5187-498A-A771-AFD5754EDC91}</ProjectGuid>
+    <ProjectGuid>{C0D3ECD4-8BD6-46AC-B8FC-7EC0879F139F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>oefenen2</RootNamespace>
-    <AssemblyName>oefenen2</AssemblyName>
+    <RootNamespace>Blackjack</RootNamespace>
+    <AssemblyName>Blackjack</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>oefenen2.Ganzenbord</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,13 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dobbelsteen.cs" />
-    <Compile Include="Ganzenbord.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Class2.cs" />
+    <Compile Include="Class3.cs" />
+    <Compile Include="KaartenDeck.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="randomize.cs" />
     <Compile Include="spel.cs" />
-    <Compile Include="spelbord.cs" />
-    <Compile Include="speler.cs" />
-    <Compile Include="Vakjes\Vakje.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
