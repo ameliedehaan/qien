@@ -1,0 +1,6 @@
+C:\Users\Dell\source\repos\oefenen2\oefenen2\obj\Debug\oefenen2.csprojAssemblyReference.cache
+C:\Users\Dell\source\repos\oefenen2\oefenen2\bin\Debug\oefenen2.exe.config
+C:\Users\Dell\source\repos\oefenen2\oefenen2\bin\Debug\oefenen2.exe
+C:\Users\Dell\source\repos\oefenen2\oefenen2\bin\Debug\oefenen2.pdb
+C:\Users\Dell\source\repos\oefenen2\oefenen2\obj\Debug\oefenen2.exe
+C:\Users\Dell\source\repos\oefenen2\oefenen2\obj\Debug\oefenen2.pdb
