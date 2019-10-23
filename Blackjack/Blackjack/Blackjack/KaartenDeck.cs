@@ -11,12 +11,13 @@ namespace Blackjack
         public int Nummer { get; set; }
         public string Kleur { get; set; }
         public bool Gepakt { get; set; }
+        public int Waarde { get; set; }
 
-        public Kaart(int nummer, string kleur)
+        public Kaart(int nummer, string kleur, int waarde)
         {
             this.Nummer = nummer;
             this.Kleur = kleur;
-            this.Gepakt = false;
+            this.Waarde = waarde;
         }
 
         public override string ToString()
@@ -27,7 +28,7 @@ namespace Blackjack
 
     public class PlaatjesKaart : Kaart
     {
-        public PlaatjesKaart(string kleur, string naam) : base(10, kleur)
+        public PlaatjesKaart(string kleur, string naam) : base(10, kleur, 10)
         {
             Naam = naam;
         }
@@ -41,7 +42,7 @@ namespace Blackjack
     }
         public class Aas : Kaart
         {
-            public Aas(string kleur, string naam): base(11, kleur)
+            public Aas(string kleur, string naam): base(11, kleur, 11)
             {
                 Naam = naam;
             }

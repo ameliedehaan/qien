@@ -11,36 +11,62 @@ namespace Blackjack
     {
         static public List<Kaart> Kaarten = new List<Kaart>();
         static public List<Kaart> DeckSpeler = new List<Kaart>();
-        public Stack<Kaart> KaartStack = new Stack<Kaart>();
+        static public List<Kaart> Dealer = new List<Kaart>();
+        static public Stack<Kaart> KaartStack = new Stack<Kaart>();
         private readonly string[] kleuren = new string[] { "Harten", "Schoppen", "Ruiten", "Klaver" };
         string userInput = "";
-        bool playActive = true;
+        static public bool playActive = true;
+        static public bool FirstPull = true;
 
         public spel()
         {
-            Console.WriteLine("Welkom bij Blackjack");
-
+            Console.WriteLine("Welkom bij Blackjack!");
             DeckOpbouwen();
             Kaarten.Randomize();
-            StackBouwen(); // stack is opgebouwd en werkt.
-            Spacer();
-            Console.WriteLine("We gaan spelen, druk op k om een kaart te krijgen.");
+            Stack.StackBouwen(); // stack is opgebouwd en werkt.
+            Spacer.spacer();
 
             while (playActive == true) {
+                if (FirstPull == true)
+                {
+                    Console.WriteLine("We gaan spelen, druk op k om een kaart te krijgen.");
+                }
+                else { }
                 userInput = Console.ReadLine();
                 if (userInput == "k")
                 {
-                    SpelerDeckBouwen();
-                    Spacer();
-
+                    DeckPlayer.SpelerDeckBouwen();
+                    Spacer.spacer();
+                    if (FirstPull == true) 
+                    {
+                        DeckDealer.DealerDeckBouwen();
+                    }
+                    else { }
+                    Spacer.spacer();
+                    PuntenRegels.puntenTelling();
+                    Console.WriteLine("Neem nog een kaart met k, druk op p voor een pas of q om het spel te beeindigen.");
+                    FirstPull = false;
                 }
-                else
+                else if (userInput == "p" && FirstPull == false)
                 {
-                    Spacer();
-                    Console.WriteLine("Je hebt de verkeerde toets ingetypd. Typ k om een kaart te krijgen.");
+                    Spacer.spacer();
+                    int TotaalWaarde = DeckPlayer.WaardeBepalen(0);
+                    string HandKaarten = Convert.ToString(spel.DeckSpeler[spel.DeckSpeler.Count-1]);
+                    Console.WriteLine(HandKaarten);
+                    Console.WriteLine("De totaalwaarde van je kaarten is " + TotaalWaarde + ".");
+                }
+                else if (userInput == "q")
+                {
+                    playActive = false;
+                }
+                else //verkeerde toets getypd.
+                {
+                    Spacer.spacer();
+                    Console.WriteLine("Je hebt de verkeerde toets ingetypd. Typ k om een kaart te krijgen of q om het spel te beeindigen.");
                     userInput = Console.ReadLine();
                 }
             }
+            Console.ReadLine();
         }
 
         public void DeckOpbouwen()
@@ -49,39 +75,13 @@ namespace Blackjack
             {
                 for (int i = 2; i < 11; i++)
                 {
-                    Kaarten.Add(new Kaart(i, kleur));
+                    Kaarten.Add(new Kaart(i, kleur, i));
                 }
                 Kaarten.Add(new PlaatjesKaart(kleur, "Boer"));
                 Kaarten.Add(new PlaatjesKaart(kleur, "Koningin"));
                 Kaarten.Add(new PlaatjesKaart(kleur, "Koning"));
                 Kaarten.Add(new Aas(kleur, "Aas"));
             }
-        }
-
-        public void StackBouwen()
-        {
-            for (int i = 0; i < 52; i++)
-            {
-                var w = spel.Kaarten[i];
-                KaartStack.Push(w);
-            }
-        }
-
-        public void SpelerDeckBouwen()
-        {
-            var z = KaartStack.Pop();
-            DeckSpeler.Add(z);
-            Console.WriteLine("Je hebt een " + DeckSpeler[DeckSpeler.Count -1] + " gekregen.");
-
-
-        }
-        public void PuntenTelling()
-        {
-            DeckSpeler.Naam 
-        }
-        public void Spacer()
-        {
-            Console.WriteLine("===================================================");
         }
     }
 }
