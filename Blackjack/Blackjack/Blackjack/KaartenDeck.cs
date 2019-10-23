@@ -27,7 +27,7 @@ namespace Blackjack
 
     public class PlaatjesKaart : Kaart
     {
-        public PlaatjesKaart(string kleur, string naam): base(10, kleur)
+        public PlaatjesKaart(string kleur, string naam) : base(10, kleur)
         {
             Naam = naam;
         }
@@ -37,5 +37,19 @@ namespace Blackjack
         {
             return $"{Naam} {Kleur}";
         }
+
     }
+        public class Aas : Kaart
+        {
+            public Aas(string kleur, string naam): base(11, kleur)
+            {
+                Naam = naam;
+            }
+        public string Naam { get; set; }
+            public override string ToString()
+            {
+                return $"{Naam} {Kleur}";
+            }
+
+        }
 }
