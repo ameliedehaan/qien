@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
-    <Compile Include="Class3.cs" />
+    <Compile Include="dealerRegels.cs" />
+    <Compile Include="DeckDealer.cs" />
+    <Compile Include="PuntenRegels.cs" />
+    <Compile Include="Spacer.cs" />
+    <Compile Include="DeckOpbouwen.cs" />
     <Compile Include="DeckPlayer.cs" />
     <Compile Include="KaartenDeck.cs" />
     <Compile Include="Program.cs" />
