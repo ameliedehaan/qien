@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dealerRegels.cs" />
     <Compile Include="DeckDealer.cs" />
     <Compile Include="PuntenRegels.cs" />
     <Compile Include="Spacer.cs" />

@@ -27,11 +27,29 @@ namespace Blackjack
             else
             {
                 var z = spel.KaartStack.Pop();
-                spel.DeckSpeler.Add(z);
+                spel.Dealer.Add(z);
                 Aantal++;
-                Console.WriteLine("De dealer heeft een " + spel.Dealer[spel.Dealer.Count - 1] + " gekregen.");
+                Console.WriteLine("De kaarten in de hand van de dealer zijn:");
+                int x = spel.DeckSpeler.Count; //hoeveelheid kaarten in hand
+                string DealerKaarten = "";
+                for (int i = 0; i < x; i++)
+                {
+                    DealerKaarten = DealerKaarten + spel.DeckSpeler[i] + " ";
+                }
+                //laten zien hoeveel kaarten je hebt en de totaalwaarde.
+                Console.WriteLine(DealerKaarten);
+                var WaardeDealer = DeckDealer.WaardeBepalen(0);
+                Console.WriteLine("De totaalwaarde van de kaarten van de dealer is " + WaardeDealer + ".");
+                if (WaardeDealer < 17)
+                {
+                    Console.WriteLine("De dealer gaat nog een keer trekken.");
+                }
+                else { }
+
             }
+
         }
+        
         static public int WaardeBepalen(int totalewaarde2)
         {
             for (int i = 0; i < Aantal; i++)
