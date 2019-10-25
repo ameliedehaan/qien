@@ -8,26 +8,42 @@ namespace Calculator
 {
     public class Calculating
     {
-        static List<int> numberSave = new List<int>();
-        static List<string> Operator = new List<string>();
-        static public int result = 0;
+        List<int> numberSave = new List<int>();
+        List<string> Operator = new List<string>();
+        int r = 0;
+        int y = 0;
+        int temptotal = 0;
+        int x = 0;
 
-
-        static public void NumCollection(int NumChoice, string FuncChoice)
+        public void NumCollection(int NumChoice, string FuncChoice)
         {
             numberSave.Add(NumChoice);
             Operator.Add(FuncChoice);
         }
-        
-        static public int MakeCalculation(int NumbChoice)
+        public void SecondCollect(int NumChoice)
         {
-            var r = 0;
-            var y = 0;
-            numberSave.Add(NumbChoice);
-            for (int i = 0; i < (numberSave.Count - 1); i = +2)
+            numberSave.Add(NumChoice);
+        }
+
+        public string clear()
+        {
+            numberSave.Clear();
+            Operator.Clear();
+            return "";
+        }
+
+
+        public int MakeCalculation()
+        {
+            for (int i = 0; i < (numberSave.Count - 1); i++)
             {
-                var x = numberSave[i];
-                var f = numberSave[i++];
+                if (temptotal == 0)
+                {
+                    x = numberSave[i];
+                }
+                else
+                { x = temptotal; }
+                var f = numberSave[i+1];
                 if (Operator[y] == "/")
                 { r = Divide.divided(x, f); }
                 else if (Operator[y] == "*")
@@ -37,8 +53,16 @@ namespace Calculator
                 else if (Operator[y] == "-")
                 { r = Subtract.subtract(x, f); }
                 y++;
+                temptotal = r;
             }
+
+            numberSave.Clear();
+            Operator.Clear();
+            y = 0;
+            temptotal = 0;
+
             return r;
             }
         }
     }
+

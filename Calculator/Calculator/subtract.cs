@@ -10,8 +10,7 @@ namespace Calculator
     {
         static public int subtract(int x, int f)
         {
-            int functionresult = x - f;
-            return functionresult;
+            return x - f;
         }
     }
 }

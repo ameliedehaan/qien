@@ -12,6 +12,7 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
+        Calculating d = new Calculating();
         public Form1()
         {
             InitializeComponent();
@@ -26,18 +27,20 @@ namespace Calculator
         private void buttonFunction_Click(object sender, EventArgs e) //button functions
         {
             Button button = (Button)sender;
-            Calculating.NumCollection(Convert.ToInt32(result.Text), button.Text);
+            int x = Convert.ToInt32(result.Text);
+            d.NumCollection(x, button.Text);
             result.Text = "";
         }
 
         private void Clear_Click(object sender, EventArgs e) //button leeg
         {
-                result.Text = "0";
+            result.Text = d.clear();
         }
 
         private void Equals_Click(object sender, EventArgs e) //button resultaat uitvoeren
         {
-            result.Text = Convert.ToString(Calculating.MakeCalculation(Convert.ToInt32(result.Text)));
+            d.SecondCollect(Convert.ToInt32(result.Text)); 
+            result.Text = Convert.ToString(d.MakeCalculation());
         }
     }
 }
