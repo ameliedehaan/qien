@@ -10,7 +10,9 @@ namespace Blackjack
     public class spel
     {
         static public List<Kaart> Kaarten = new List<Kaart>();
-        static public List<Kaart> DeckSpeler = new List<Kaart>();
+       // static public List<Kaart> DeckSpeler = new List<Kaart>();
+        static public List<Player> Spelers = new List<Player>();
+        public Player activePlayer;
         static public List<Kaart> Dealer = new List<Kaart>();
         static public Stack<Kaart> KaartStack = new Stack<Kaart>();
         private readonly string[] kleuren = new string[] { "Harten", "Schoppen", "Ruiten", "Klaver" };
@@ -20,30 +22,37 @@ namespace Blackjack
 
         public spel()
         {
-            Console.WriteLine("Welkom bij Blackjack!");
             DeckOpbouwen();
             Kaarten.Randomize();
             Stack.StackBouwen(); // stack is opgebouwd en werkt.
+
+            //welkomst berichten en namen spelers
+            Console.WriteLine("Welkom bij Blackjack!");
+            Console.WriteLine("Wat is je naam Speler 1?");
+            addPlayer(Console.ReadLine());
+            activePlayer = Spelers[0];
             Spacer.spacer();
 
             while (playActive == true)
             {
-                if (FirstPull == true)
+                foreach (Player activePlayer in Spelers) //spelers selecteren
+                if (activePlayer.TotaalWaarde == 0) //begin bericht voor elke speler
                 {
                     Console.WriteLine("We gaan spelen, druk op k om een kaart te krijgen.");
                 }
-                else { }
                 userInput = Console.ReadLine();
-                if (userInput == "k")
+                if (userInput == "k") //een kaart trekken
                 {
-                    DeckPlayer.SpelerDeckBouwen();
+                    Player.SpelerDeckBouwen();
+                    //Player.Hand = spel.DeckSpeler;
+                    //var x = DeckPlayer.TotaalWaarde;
+                    //activePlayer.TotaalWaarde = x;
                     Spacer.spacer();
                     if (FirstPull == true && playActive == true)
                     {
                         DeckDealer.DealerDeckBouwen();
                         PuntenRegels.puntenTelling();
                     }
-                    else { }
                     Spacer.spacer();
                     PuntenRegels.puntenTelling();
                     if (playActive == true)
@@ -56,17 +65,20 @@ namespace Blackjack
                 else if (userInput == "p" && FirstPull == false)
                 {
                     Spacer.spacer();
-                    int TotaalWaarde = DeckPlayer.WaardeBepalen(0);
+                    activePlayer.TotaalWaarde = DeckPlayer.WaardeBepalen(0);
                     Console.WriteLine("De kaarten in je hand zijn:");
                     string HandKaarten = "";
-                    int x = spel.DeckSpeler.Count; //hoeveelheid kaarten in hand
+                    int x = activePlayer.Count; //hoeveelheid kaarten in hand
                     for (int i = 0; i < x; i++)
                     {
                         HandKaarten = HandKaarten + DeckSpeler[i] + " ";
                     }
                     //laten zien hoeveel kaarten je hebt en de totaalwaarde.
                     Console.WriteLine(HandKaarten);
-                    Console.WriteLine("De totaalwaarde van je kaarten is " + TotaalWaarde + ".");
+                    Console.WriteLine("De totaalwaarde van je kaarten is " + activePlayer.TotaalWaarde + ".");
+                    activePlayer.pas = true;
+                    var y = Spelers.Count;
+
                     PuntenRegels.puntenTelling(); //puntentelling voor de beurt van de dealer.
 
                 }
@@ -107,6 +119,11 @@ namespace Blackjack
                 Kaarten.Add(new PlaatjesKaart(kleur, "Koning"));
                 Kaarten.Add(new Aas(kleur, "Aas"));
             }
+        }
+        public void addPlayer(string Naam)
+        {
+            Player spelerNaam = new Player(Naam);
+            Spelers.Add(spelerNaam);
         }
     }
 }

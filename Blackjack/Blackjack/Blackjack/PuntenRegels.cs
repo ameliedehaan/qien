@@ -13,6 +13,7 @@ namespace Blackjack
         {
             int TotaalWaarde = DeckPlayer.WaardeBepalen(0);
             int WaardeDealer = DeckDealer.WaardeBepalen(0);
+
             if (TotaalWaarde > 21)
             {
                 Spacer.spacer();
