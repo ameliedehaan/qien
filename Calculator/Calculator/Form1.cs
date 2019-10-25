@@ -27,7 +27,7 @@ namespace Calculator
         private void buttonFunction_Click(object sender, EventArgs e) //button functions
         {
             Button button = (Button)sender;
-            int x = Convert.ToInt32(result.Text);
+            double x = Convert.ToDouble(result.Text);
             d.NumCollection(x, button.Text);
             result.Text = "";
         }
@@ -39,8 +39,15 @@ namespace Calculator
 
         private void Equals_Click(object sender, EventArgs e) //button resultaat uitvoeren
         {
-            d.SecondCollect(Convert.ToInt32(result.Text)); 
+            d.SecondCollect(Convert.ToDouble(result.Text)); 
             result.Text = Convert.ToString(d.MakeCalculation());
+        }
+
+        private void buttonSingFunc_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            double x = Convert.ToDouble(result.Text);
+            result.Text = Convert.ToString(d.SingleCalculation(x, button.Text));
         }
     }
 }

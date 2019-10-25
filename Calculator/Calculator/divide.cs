@@ -8,7 +8,7 @@ namespace Calculator
 {
     public class Divide
     {
-        static public int divided(int x, int f)
+        static public double divided(double x, double f)
         {
             return x / f;  
         }

@@ -8,7 +8,7 @@ namespace Calculator
 {
     class Add
     {
-         static public int add(int x, int f)
+         static public double add(double x, double f)
         {
             return x + f; 
         }

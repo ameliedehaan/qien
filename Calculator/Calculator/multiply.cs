@@ -8,7 +8,7 @@ namespace Calculator
 {
     class Multiply
     {
-        static public int multiply(int x, int f)
+        static public double multiply(double x, double f)
         {
             return x * f;
         }
