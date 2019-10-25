@@ -8,19 +8,19 @@ namespace Calculator
 {
     public class Calculating
     {
-        List<int> numberSave = new List<int>();
+        List<double> numberSave = new List<double>();
         List<string> Operator = new List<string>();
-        int r = 0;
+        double r = 0;
         int y = 0;
-        int temptotal = 0;
-        int x = 0;
+        double temptotal = 0;
+        double x = 0;
 
-        public void NumCollection(int NumChoice, string FuncChoice)
+        public void NumCollection(double NumChoice, string FuncChoice)
         {
             numberSave.Add(NumChoice);
             Operator.Add(FuncChoice);
         }
-        public void SecondCollect(int NumChoice)
+        public void SecondCollect(double NumChoice)
         {
             numberSave.Add(NumChoice);
         }
@@ -29,11 +29,42 @@ namespace Calculator
         {
             numberSave.Clear();
             Operator.Clear();
-            return "";
+            temptotal = 0;
+            return "";     
         }
 
+        public double SingleCalculation(double NumChoice, string FuncChoice) // single number functions
+        {
+            numberSave.Add(NumChoice);
+            Operator.Add(FuncChoice);
+            var i = 0;
+            if (temptotal ==0)
+            {
+                x = numberSave[i];
+            }
+            else
+            {
+                x = temptotal;
+            }
+            if (Operator[y] == "√")
+            {
+                r = Math.Sqrt(x);
+            }
+            else if (Operator[y] == "^2")
+            {
+                r = Math.Pow(x, 2);
+            }
+            else if (Operator[y] == "^3")
+                {
+                r = Math.Pow(x, 3);
+            }
+            i++;
+            temptotal = r;
+            Operator.Clear();
+            return r;
 
-        public int MakeCalculation()
+        }
+        public double MakeCalculation()
         {
             for (int i = 0; i < (numberSave.Count - 1); i++)
             {

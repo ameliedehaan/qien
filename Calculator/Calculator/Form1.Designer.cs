@@ -46,6 +46,9 @@
             this.Clear = new System.Windows.Forms.Button();
             this.Equals = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -208,7 +211,7 @@
             this.result.Location = new System.Drawing.Point(24, 24);
             this.result.Name = "result";
             this.result.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.result.Size = new System.Drawing.Size(259, 45);
+            this.result.Size = new System.Drawing.Size(326, 45);
             this.result.TabIndex = 15;
             this.result.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -237,20 +240,55 @@
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(233, 318);
+            this.button10.Location = new System.Drawing.Point(300, 85);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(50, 47);
             this.button10.TabIndex = 18;
             this.button10.Text = "√";
             this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.buttonFunction_Click);
+            this.button10.Click += new System.EventHandler(this.buttonSingFunc_Click);
+            // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(300, 143);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(50, 47);
+            this.button11.TabIndex = 19;
+            this.button11.Text = "^2";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.buttonSingFunc_Click);
+            // 
+            // button12
+            // 
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Location = new System.Drawing.Point(300, 202);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(50, 47);
+            this.button12.TabIndex = 20;
+            this.button12.Text = "^3";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.buttonSingFunc_Click);
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(300, 260);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(50, 47);
+            this.button13.TabIndex = 21;
+            this.button13.Text = "√";
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(311, 389);
+            this.ClientSize = new System.Drawing.Size(391, 389);
+            this.Controls.Add(this.button13);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.Equals);
             this.Controls.Add(this.Clear);
@@ -296,6 +334,9 @@
         private System.Windows.Forms.Button Equals;
         public System.Windows.Forms.TextBox result;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
     }
 }
 

@@ -8,7 +8,7 @@ namespace Calculator
 {
     class Subtract
     {
-        static public int subtract(int x, int f)
+        static public double subtract(double x, double f)
         {
             return x - f;
         }
