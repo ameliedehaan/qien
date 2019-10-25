@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    class Multiply
+    class Root
     {
-        static public int multiply(int x, int f)
+        static public int root(int x, int f)
         {
-            return x * f;
+            int functionresult = (x / x);
+            return functionresult;
         }
     }
 }
