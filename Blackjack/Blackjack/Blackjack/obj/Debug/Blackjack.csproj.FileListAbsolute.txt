@@ -4,3 +4,8 @@ C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\bin\Debug\Blackjack.pdb
 C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\obj\Debug\Blackjack.csprojAssemblyReference.cache
 C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\obj\Debug\Blackjack.exe
 C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\obj\Debug\Blackjack.pdb
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\bin\Debug\EntityFramework.dll
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\bin\Debug\EntityFramework.xml
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dell\qien\Blackjack\Blackjack\Blackjack\obj\Debug\Blackjack.csproj.CopyComplete

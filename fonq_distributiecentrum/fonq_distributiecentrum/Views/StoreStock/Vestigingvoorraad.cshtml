@@ -1,0 +1,38 @@
+﻿@model List<fonq_distributiecentrum.Models.LokaalVoorraad>
+@{
+    ViewBag.Title = "Vestigingvoorraad";
+}
+
+<h2>Vestigingvoorraad</h2>
+@foreach (var s in Model)
+{ 
+<img src="~/Images/@s.AfbeeldingProd" />
+     }
+
+<table width="600px" border="1">
+    <tr>
+        <th>Product ID </th>
+        <th>
+            Vestiging ID
+        </th>
+        <th>
+            Store Name
+        </th>
+        <th>Location </th>
+        <th>Store Stock</th>
+        <th>Winkelvoorraad</th>
+    </tr>
+
+    @foreach (var s in Model)
+    {
+<tr>
+    <td>@s.ProductID</td>
+    <td>@s.vestigingID</td>
+    <td>@s.StoreName</td>
+    <td>@s.Location</td>
+    <td>@s.StoreStock</td>
+    <td>@Html.ActionLink("WinkelVoorraad Aanpassen", "UpdateLocalStock", "StoreStock", new { ProductID = s.ProductID, vestigingID = s.vestigingID }, null)</td>
+
+</tr>
+    }
+</table>

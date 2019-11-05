@@ -32,7 +32,18 @@ namespace Calculator
             temptotal = 0;
             return "";     
         }
-
+        public string FuncPlusMin(string r)
+        {
+            if (r.IndexOf('-') == -1)
+            {
+                r = ("-" + r);
+            }
+            else
+            {
+                
+            }
+            return r;
+        }
         public double SingleCalculation(double NumChoice, string FuncChoice) // single number functions
         {
             numberSave.Add(NumChoice);

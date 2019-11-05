@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="fonqModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="distributie_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merk" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="aftmetingen" Type="varchar" MaxLength="50" />
+          <Property Name="voorraad" Type="int" Nullable="false" />
+          <Property Name="gewicht" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="naam" Type="varchar" MaxLength="50" />
+          <Property Name="afbeelding" Type="varchar" MaxLength="50" />
+          <Property Name="totalLocal" Type="int" />
+          <Property Name="Show" Type="bit" />
+        </EntityType>
+        <EntityType Name="prod_vest_voorraad">
+          <Key>
+            <PropertyRef Name="product_vest_id" />
+          </Key>
+          <Property Name="product_vest_id" Type="int" Nullable="false" />
+          <Property Name="vestiging_id" Type="int" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="voorraad_vest" Type="int" />
+        </EntityType>
+        <EntityType Name="vestiging">
+          <Key>
+            <PropertyRef Name="vestiging_id" />
+          </Key>
+          <Property Name="vestiging_id" Type="int" Nullable="false" />
+          <Property Name="locatie" Type="varchar" MaxLength="100" />
+          <Property Name="naam" Type="varchar" MaxLength="20" />
+          <Property Name="telefoon" Type="varchar" MaxLength="20" />
+          <Property Name="personeel_aantal" Type="int" />
+        </EntityType>
+        <Association Name="FK_prod_vest_voorraad_distributie_product">
+          <End Role="distributie_product" Type="Self.distributie_product" Multiplicity="0..1" />
+          <End Role="prod_vest_voorraad" Type="Self.prod_vest_voorraad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distributie_product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="prod_vest_voorraad">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prod_vest_voorraad_vestiging">
+          <End Role="vestiging" Type="Self.vestiging" Multiplicity="0..1" />
+          <End Role="prod_vest_voorraad" Type="Self.prod_vest_voorraad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vestiging">
+              <PropertyRef Name="vestiging_id" />
+            </Principal>
+            <Dependent Role="prod_vest_voorraad">
+              <PropertyRef Name="vestiging_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fonqModelStoreContainer">
+          <EntitySet Name="distributie_product" EntityType="Self.distributie_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prod_vest_voorraad" EntityType="Self.prod_vest_voorraad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vestiging" EntityType="Self.vestiging" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_prod_vest_voorraad_distributie_product" Association="Self.FK_prod_vest_voorraad_distributie_product">
+            <End Role="distributie_product" EntitySet="distributie_product" />
+            <End Role="prod_vest_voorraad" EntitySet="prod_vest_voorraad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prod_vest_voorraad_vestiging" Association="Self.FK_prod_vest_voorraad_vestiging">
+            <End Role="vestiging" EntitySet="vestiging" />
+            <End Role="prod_vest_voorraad" EntitySet="prod_vest_voorraad" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fonqModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="distributie_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="merk" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aftmetingen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="voorraad" Type="Int32" Nullable="false" />
+          <Property Name="gewicht" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="naam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="prod_vest_voorraad" Relationship="Self.FK_prod_vest_voorraad_distributie_product" FromRole="distributie_product" ToRole="prod_vest_voorraad" />
+          <Property Name="afbeelding" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="totalLocal" Type="Int32" />
+          <Property Name="Show" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="prod_vest_voorraad">
+          <Key>
+            <PropertyRef Name="product_vest_id" />
+          </Key>
+          <Property Name="product_vest_id" Type="Int32" Nullable="false" />
+          <Property Name="vestiging_id" Type="Int32" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="voorraad_vest" Type="Int32" />
+          <NavigationProperty Name="distributie_product" Relationship="Self.FK_prod_vest_voorraad_distributie_product" FromRole="prod_vest_voorraad" ToRole="distributie_product" />
+          <NavigationProperty Name="vestiging" Relationship="Self.FK_prod_vest_voorraad_vestiging" FromRole="prod_vest_voorraad" ToRole="vestiging" />
+        </EntityType>
+        <EntityType Name="vestiging">
+          <Key>
+            <PropertyRef Name="vestiging_id" />
+          </Key>
+          <Property Name="vestiging_id" Type="Int32" Nullable="false" />
+          <Property Name="locatie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="telefoon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="personeel_aantal" Type="Int32" />
+          <NavigationProperty Name="prod_vest_voorraad" Relationship="Self.FK_prod_vest_voorraad_vestiging" FromRole="vestiging" ToRole="prod_vest_voorraad" />
+        </EntityType>
+        <Association Name="FK_prod_vest_voorraad_distributie_product">
+          <End Role="distributie_product" Type="Self.distributie_product" Multiplicity="0..1" />
+          <End Role="prod_vest_voorraad" Type="Self.prod_vest_voorraad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distributie_product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="prod_vest_voorraad">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prod_vest_voorraad_vestiging">
+          <End Role="vestiging" Type="Self.vestiging" Multiplicity="0..1" />
+          <End Role="prod_vest_voorraad" Type="Self.prod_vest_voorraad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vestiging">
+              <PropertyRef Name="vestiging_id" />
+            </Principal>
+            <Dependent Role="prod_vest_voorraad">
+              <PropertyRef Name="vestiging_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fonqEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="distributie_product" EntityType="Self.distributie_product" />
+          <EntitySet Name="prod_vest_voorraad" EntityType="Self.prod_vest_voorraad" />
+          <EntitySet Name="vestigings" EntityType="Self.vestiging" />
+          <AssociationSet Name="FK_prod_vest_voorraad_distributie_product" Association="Self.FK_prod_vest_voorraad_distributie_product">
+            <End Role="distributie_product" EntitySet="distributie_product" />
+            <End Role="prod_vest_voorraad" EntitySet="prod_vest_voorraad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prod_vest_voorraad_vestiging" Association="Self.FK_prod_vest_voorraad_vestiging">
+            <End Role="vestiging" EntitySet="vestigings" />
+            <End Role="prod_vest_voorraad" EntitySet="prod_vest_voorraad" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fonqModelStoreContainer" CdmEntityContainer="fonqEntities">
+          <EntitySetMapping Name="distributie_product">
+            <EntityTypeMapping TypeName="fonqModel.distributie_product">
+              <MappingFragment StoreEntitySet="distributie_product">
+                <ScalarProperty Name="Show" ColumnName="Show" />
+                <ScalarProperty Name="totalLocal" ColumnName="totalLocal" />
+                <ScalarProperty Name="afbeelding" ColumnName="afbeelding" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="merk" ColumnName="merk" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="aftmetingen" ColumnName="aftmetingen" />
+                <ScalarProperty Name="voorraad" ColumnName="voorraad" />
+                <ScalarProperty Name="gewicht" ColumnName="gewicht" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prod_vest_voorraad">
+            <EntityTypeMapping TypeName="fonqModel.prod_vest_voorraad">
+              <MappingFragment StoreEntitySet="prod_vest_voorraad">
+                <ScalarProperty Name="product_vest_id" ColumnName="product_vest_id" />
+                <ScalarProperty Name="vestiging_id" ColumnName="vestiging_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="voorraad_vest" ColumnName="voorraad_vest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vestigings">
+            <EntityTypeMapping TypeName="fonqModel.vestiging">
+              <MappingFragment StoreEntitySet="vestiging">
+                <ScalarProperty Name="vestiging_id" ColumnName="vestiging_id" />
+                <ScalarProperty Name="locatie" ColumnName="locatie" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="telefoon" ColumnName="telefoon" />
+                <ScalarProperty Name="personeel_aantal" ColumnName="personeel_aantal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
