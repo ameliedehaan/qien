@@ -129,6 +129,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreStockController.cs" />
+    <Compile Include="Converter\ConvertVoorraadVestiging.cs" />
+    <Compile Include="Converter\ProductConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,6 +140,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repositories\repository.cs" />
     <Compile Include="repositories\StoreRepository.cs" />
+    <Compile Include="Validations\validate_stock.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

@@ -15,6 +15,7 @@
     </div>
     <div>
         @Html.TextBoxFor(m => m.StoreStock)
+        @Html.ValidationMessageFor(m => m.StoreStock)
     </div>
     <br />
     <button type="submit">Update</button>
