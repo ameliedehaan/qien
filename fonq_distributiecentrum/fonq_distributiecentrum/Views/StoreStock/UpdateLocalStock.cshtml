@@ -1,0 +1,21 @@
+﻿@model fonq_distributiecentrum.Models.LokaalVoorraad
+@{
+    ViewBag.Title = "UpdateLocalStock";
+}
+
+<h2>UpdateLocalStock</h2>
+
+@using (Html.BeginForm("UpdateLocalStock", "StoreStock"))
+
+{
+    @Html.HiddenFor(s => s.ProductID)
+    @Html.HiddenFor(s => s.vestigingID)
+    <div>
+        @Html.LabelFor(m => m.StoreStock)
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.StoreStock)
+    </div>
+    <br />
+    <button type="submit">Update</button>
+}

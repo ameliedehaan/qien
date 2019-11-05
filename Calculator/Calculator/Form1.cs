@@ -49,5 +49,12 @@ namespace Calculator
             double x = Convert.ToDouble(result.Text);
             result.Text = Convert.ToString(d.SingleCalculation(x, button.Text));
         }
+
+        private void ClickPlusMin(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            string x = result.Text;
+            result.Text = d.FuncPlusMin(x);
+        }
     }
 }

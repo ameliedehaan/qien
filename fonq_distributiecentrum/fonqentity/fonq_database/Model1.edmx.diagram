@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f954b709587a48dd8be2761adfe125c3" Name="Diagram1">
+        <EntityTypeShape EntityType="fonqModel.distributie_product" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="fonqModel.prod_vest_voorraad" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fonqModel.vestiging" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="fonqModel.FK_prod_vest_voorraad_distributie_product" ManuallyRouted="false" />
+        <AssociationConnector Association="fonqModel.FK_prod_vest_voorraad_vestiging" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

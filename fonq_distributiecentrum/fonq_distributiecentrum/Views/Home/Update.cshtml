@@ -1,0 +1,66 @@
+﻿@model fonq_distributiecentrum.Models.producten
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>UpdateProduct</h2>
+
+@using (Html.BeginForm("Update", "Home"))
+{
+    @Html.HiddenFor(m => m.productID) //hidden id, gebruiker hoeft deze niet te zien.
+    <div>
+        @Html.LabelFor(m => m.naam)
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.naam)
+        @Html.ValidationMessageFor(m => m.naam)
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(m => m.type)
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.type)
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(m => m.merk)
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.merk)
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(m => m.gewicht)
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.gewicht)
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(m => m.afmetingen)
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.afmetingen)
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(m => m.voorraad)
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.voorraad)
+        @Html.ValidationMessageFor(m => m.voorraad)
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(m => m.afbeeldingLink)
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.afbeeldingLink)
+    </div>
+    <br />
+    <div>
+        <button type="submit">Update</button>
+    </div>
+
+}

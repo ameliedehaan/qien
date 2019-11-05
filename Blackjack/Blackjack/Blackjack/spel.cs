@@ -10,7 +10,7 @@ namespace Blackjack
     public class spel
     {
         static public List<Kaart> Kaarten = new List<Kaart>();
-       // static public List<Kaart> DeckSpeler = new List<Kaart>();
+        static public List<Kaart> DeckSpeler = new List<Kaart>();
         static public List<Player> Spelers = new List<Player>();
         public Player activePlayer;
         static public List<Kaart> Dealer = new List<Kaart>();
@@ -31,6 +31,8 @@ namespace Blackjack
             Console.WriteLine("Wat is je naam Speler 1?");
             addPlayer(Console.ReadLine());
             activePlayer = Spelers[0];
+            Console.WriteLine("Wat is je naam Speler 2?");
+            addPlayer(Console.ReadLine());
             Spacer.spacer();
 
             while (playActive == true)
@@ -68,7 +70,7 @@ namespace Blackjack
                     activePlayer.TotaalWaarde = DeckPlayer.WaardeBepalen(0);
                     Console.WriteLine("De kaarten in je hand zijn:");
                     string HandKaarten = "";
-                    int x = activePlayer.Count; //hoeveelheid kaarten in hand
+                    int x = DeckSpeler.Count; //hoeveelheid kaarten in hand
                     for (int i = 0; i < x; i++)
                     {
                         HandKaarten = HandKaarten + DeckSpeler[i] + " ";

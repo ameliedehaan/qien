@@ -1,0 +1,25 @@
+﻿@model  fonq_distributiecentrum.Models.producten
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search Result</h2>
+
+<p>
+    Zoek voor een meubelstuk.
+    </p>
+    @using (Html.BeginForm())
+    {
+<p>
+    Zoeken: @Html.TextBox("SearchString", "Search") <br />
+
+
+    @Html.DropDownList("Searchfunction", 
+                        new SelectList(Enum.GetValues()))
+
+</p>
+}
+
+
+
+    

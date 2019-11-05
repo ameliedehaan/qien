@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +55,11 @@
     <Compile Include="Player.cs" />
     <Compile Include="dealerRegels.cs" />
     <Compile Include="DeckDealer.cs" />
+    <Compile Include="plek_.cs">
+      <DependentUpon>spelers.tt</DependentUpon>
+    </Compile>
     <Compile Include="PuntenRegels.cs" />
+    <Compile Include="Repositories\speler_database.cs" />
     <Compile Include="Spacer.cs" />
     <Compile Include="DeckOpbouwen.cs" />
     <Compile Include="DeckPlayer.cs" />
@@ -55,10 +68,55 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="randomize.cs" />
     <Compile Include="spel.cs" />
+    <Compile Include="speler.cs">
+      <DependentUpon>spelers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spelers.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spelers.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spelers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spelers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spelers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>spelers.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="spellen_.cs">
+      <DependentUpon>spelers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Stack.cs" />
+    <Compile Include="userCheck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="spelers.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>spelers.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="spelers.edmx.diagram">
+      <DependentUpon>spelers.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="spelers.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>spelers.Context.cs</LastGenOutput>
+      <DependentUpon>spelers.edmx</DependentUpon>
+    </Content>
+    <Content Include="spelers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>spelers.edmx</DependentUpon>
+      <LastGenOutput>spelers.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

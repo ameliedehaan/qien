@@ -9,7 +9,7 @@ namespace Blackjack
     public class Player
     {
         public string name;
-        //static public string hand;
+        static public string hand;
         public int totaalwaarde;
         public bool pas;
         static public List<DeckPlayer> Hand = new List<DeckPlayer>();
@@ -38,10 +38,10 @@ namespace Blackjack
             if (spel.FirstPull == true)
             {
                 var z = spel.KaartStack.Pop();
-                Hand.Add(z);
+              //  Hand.Add(z);
                 Aantal++;
                 var u = spel.KaartStack.Pop();
-                Hand.Add(u);
+              //  Hand.Add(u);
                 Aantal++;
                 Console.WriteLine("Je hebt een " + spel.DeckSpeler[spel.DeckSpeler.Count - 1] + " en een " + spel.DeckSpeler[spel.DeckSpeler.Count - 2] + " gekregen.");
                 int TotaalWaarde = WaardeBepalen(0);

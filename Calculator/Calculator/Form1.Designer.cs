@@ -273,12 +273,13 @@
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(300, 260);
+            this.button13.Location = new System.Drawing.Point(23, 260);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(50, 47);
             this.button13.TabIndex = 21;
-            this.button13.Text = "√";
+            this.button13.Text = "+ / -";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.ClickPlusMin);
             // 
             // Form1
             // 
