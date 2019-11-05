@@ -5,6 +5,7 @@ using System.Web;
 using fonqentity;
 using fonq_distributiecentrum.Models;
 using System.ComponentModel.DataAnnotations;
+using fonq_distributiecentrum.Validations;
 
 namespace fonq_distributiecentrum.Models
 {
@@ -23,12 +24,14 @@ namespace fonq_distributiecentrum.Models
         public double gewicht { get; set; }
 
         [Required(ErrorMessage = "Je moet een voorraad aangeven.")]
+        [validate_stock(ErrorMessage = "Voorraad moet een veelvoud van 2 zijn.")]
         public int voorraad { get; set; }
 
         public int productID { get; set; }
 
         public string afbeeldingLink { get; set; }
-
+        [Required(ErrorMessage = "Je moet een voorraad aangeven.")]
+        [validate_stock(ErrorMessage = "Voorraad moet een veelvoud van 2 zijn.")]
         public int totalLocal { get; set; }
         public bool Show { get; set; }
     }

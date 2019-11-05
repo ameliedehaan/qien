@@ -14,8 +14,11 @@ namespace fonq_distributiecentrum.Controllers
         private StoreRepository d = new StoreRepository();
 
         //show local stock
-        public ActionResult Vestigingvoorraad(int productID)
+        public ActionResult Vestigingvoorraad(int productID, string image, string ProductName)
         {
+            ViewBag.ProductImage = image;
+            ViewBag.ProductName = ProductName;
+
             return View(d.GetProductStock(productID));
         }
 
@@ -29,6 +32,10 @@ namespace fonq_distributiecentrum.Controllers
         [HttpPost]
         public ActionResult UpdateLocalStock(LokaalVoorraad Pmodel)
         {
+            if (!ModelState.IsValid)
+                return View(Pmodel);
+            // check the localStock,
+
             d.UpdateLocalStock(Pmodel);
             return RedirectToAction("Producten", "Home");
         }

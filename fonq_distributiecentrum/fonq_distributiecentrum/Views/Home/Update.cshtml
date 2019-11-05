@@ -8,6 +8,7 @@
 @using (Html.BeginForm("Update", "Home"))
 {
     @Html.HiddenFor(m => m.productID) //hidden id, gebruiker hoeft deze niet te zien.
+    @Html.HiddenFor(m => m.voorraad)
     <div>
         @Html.LabelFor(m => m.naam)
     </div>
@@ -42,14 +43,6 @@
     </div>
     <div>
         @Html.TextBoxFor(m => m.afmetingen)
-    </div>
-    <br />
-    <div>
-        @Html.LabelFor(m => m.voorraad)
-    </div>
-    <div>
-        @Html.TextBoxFor(m => m.voorraad)
-        @Html.ValidationMessageFor(m => m.voorraad)
     </div>
     <br />
     <div>

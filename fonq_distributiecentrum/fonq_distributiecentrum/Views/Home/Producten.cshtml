@@ -2,32 +2,39 @@
 @{
     ViewBag.Title = "Producten";
 }
+    <center>
+        <h2>Producten</h2>
 
-<h2>Producten</h2>
+        @Html.ActionLink("Add", "Add", "Home")
 
-@Html.ActionLink("Add", "Add", "Home")
-<center>
-    <table width="1000px" border="1">
-        <tr><th></th> <th align="center">Naam</th> <th align="center">Soort</th> <th align="center">Merk</th> 
-        <th align="center">Afmetingen</th><th align="center">Gewicht</th><th align="center">Voorraad</th>
-        <th align="center">Winkelvoorraad</th><th align="center">Update</th><th align="center">Remove</th>
-        <th align="center">Lokaal Voorraad</th></tr>
-        @foreach (var g in Model)
-        {
-
+        <table width="1000px" border="1">
             <tr>
-                <td align="center"><img src="~/Images/@g.afbeeldingLink" width="200" /></td>
-                <td align="center">@g.naam</td>
-                <td align="center">@g.type</td>
-                <td align="center">@g.merk</td>
-                <td align="center">@g.afmetingen</td>
-                <td align="center">@g.gewicht</td>
-                <td align="center">@g.voorraad</td>
-                <td align="center">@Html.ActionLink("In de winkel", "Vestigingvoorraad", "StoreStock", new { productID = g.productID }, null)</td>
-                <td align="center">@Html.ActionLink("Update product", "Update", "Home", new { productID = g.productID }, null)</td>
-                <td align="center">@Html.ActionLink("Product verwijderen", "Remove", "Home", new { productID = g.productID }, null)</td>
-                <td align="center">@g.totalLocal</td>
+                <th></th>
+                <th align="center">Naam</th>
+                <th align="center">Soort</th>
+                <th align="center">Merk</th>
+                <th align="center">Afmetingen</th>
+                <th align="center">Gewicht</th>
+                <th align="center">Voorraad</th>
+                <th align="center">Winkelvoorraad</th>
+                <th align="center">Update</th>
+                <th align="center">Remove</th>
             </tr>
-        }
-    </table>
-</center>
+            @foreach (var g in Model)
+            {
+
+                <tr>
+                    <td align="center"><img src="~/Images/@g.afbeeldingLink" width="200" /></td>
+                    <td align="center">@g.naam</td>
+                    <td align="center">@g.type</td>
+                    <td align="center">@g.merk</td>
+                    <td align="center">@g.afmetingen</td>
+                    <td align="center">@g.gewicht</td>
+                    <td align="center">@g.totalLocal</td>
+                    <td align="center">@Html.ActionLink("In de winkel", "Vestigingvoorraad", "StoreStock", new { productID = g.productID, image = g.afbeeldingLink, ProductName = g.naam }, null)</td>
+                    <td align="center">@Html.ActionLink("Update product", "Update", "Home", new { productID = g.productID }, null)</td>
+                    <td align="center">@Html.ActionLink("Product verwijderen", "Remove", "Home", new { productID = g.productID }, null)</td>
+                </tr>
+            }
+        </table>
+    </center>
